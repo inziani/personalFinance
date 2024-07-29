@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-c8z4@udbjabza9=o#%)yv1)dqle%p04oilq+9dapq3^1)=we1e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = True
+
+ALLOWED_HOSTS = ['*']
+
+
 
 
 # Application definition
@@ -37,6 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # MyApps
+
+    'home.apps.HomeConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -102,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Internationalization

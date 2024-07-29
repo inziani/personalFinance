@@ -1,4 +1,4 @@
-# version: "3.12.4"
+version: "3.12.4"
 services:
   web:
     build: .
@@ -11,7 +11,16 @@ services:
       - db
   db:
     image: postgres
+    restart: always
+    expose:
+      - 5432
     environment:
       - POSTGRES_DB=personalBudgetApp
       - POSTGRES_USER=personalBudgetApp
       - POSTGRES_PASSWORD=personalBudgetApp
+    volumes:
+      #- .:/code
+      - personalBudgetApp-volume:/var/lib/postgresql/data
+    # - ./onlineshop-volume:/var/lib/postgresql/data
+volumes:
+  personalBudgetApp-volume:
