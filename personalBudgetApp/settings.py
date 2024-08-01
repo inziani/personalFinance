@@ -48,6 +48,12 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig'
 ]
 
+TEMPLATES = [
+    {
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+    }
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
