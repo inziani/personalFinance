@@ -2,12 +2,13 @@ from django import forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .model import Account
+from accounts.models import User, UserProfile
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     class Meta:
-        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone', 'picture', 'password')
+        model = User
+        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number', 'password')
 
     def save(self, commit=True):
         #Save the Provided Password in hashed format
@@ -22,8 +23,8 @@ class UserCreationForm(forms.ModelForm):
     password_2 = forms.CharField(label='Password Confirmation', widget=forms.PasswordInput)
 
     class Meta:
-        model= Account
-        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone', 'picture', 'is_staff', 'is_superuser')
+        model= User
+        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number', 'is_staff', 'is_superuser')
 
     def clean_password_2(self):
     # Check that the two passwords match
@@ -39,14 +40,14 @@ class UserCreationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password_1'])
         if commit:
             user.save()
-            return user
+        return user
 
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
     class Meta:
-        model= Account
-        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone', 'picture', 'password', 'is_staff', 'is_superuser')
+        model= User
+        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number', 'password', 'is_staff', 'is_superuser')
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value
