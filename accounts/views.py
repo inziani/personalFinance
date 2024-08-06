@@ -11,10 +11,14 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse
 
-from .models import Account
+from .models import User
 from .forms import RegistrationForm
+from django.views.generic import TemplateView
 
 # Create your views here.
+
+class HomePageView(TemplateView):
+    template_name = 'home.html'
 
 class RegistrationView(CreateView):
     template_name = 'registration/register.html'
@@ -30,10 +34,10 @@ class RegistrationView(CreateView):
         success_url = reverse('login')
         if next_url:
             success_url += '?next={}'.format(next_url)
-    return success_url
+        return success_url
 
 class ProfileView(UpdateView):
-    model = Account
+    model = User
     fields = ['username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone', 'picture']
     template_name = 'registration/profile.html'
 
