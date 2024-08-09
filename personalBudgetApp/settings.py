@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig'
+    'bootstrap5'
 ]
 
 
@@ -66,7 +67,8 @@ ROOT_URLCONF = 'personalBudgetApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR/ 'templates/')],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates/')],
+        'DIRS':[],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

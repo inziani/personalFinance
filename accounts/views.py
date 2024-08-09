@@ -18,7 +18,7 @@ from django.views.generic import TemplateView
 # Create your views here.
 
 class HomePageView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'accounts_home.html'
 
 class RegistrationView(CreateView):
     template_name = 'registration/register.html'
