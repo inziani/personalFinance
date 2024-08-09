@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig'
-    'bootstrap5'
+    # 'bootstrap5'
 ]
 
 

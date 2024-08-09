@@ -14,7 +14,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     surname = models.CharField(max_length=150)
     phone_number = models.CharField(max_length=50)
     date_of_birth = models.DateField(blank=True, null=True)
-    # picture = models.ImageField(blank=True, null=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -28,6 +27,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+        ordering = ['-surname']
 
     def get_full_name(self):
         return f'{self.first_name}, {self.second_name}, {self.surname}'
