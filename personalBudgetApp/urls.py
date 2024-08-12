@@ -23,8 +23,18 @@ admin.site.index_title = 'Site Administration'
 
 
 urlpatterns = [
-    path('accounts/', include('accounts.urls')),
+
+    # User Management
+
+    # path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    # Home Page
+
     path('', include('home.urls')),
+
+    # Django Admin
+
     path('admin/', admin.site.urls),
     
 ]
