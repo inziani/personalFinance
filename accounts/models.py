@@ -10,7 +10,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=150)
-    second_name = models.CharField(max_length=150)
+    middle_name = models.CharField(max_length=150)
     surname = models.CharField(max_length=150)
     phone_number = models.CharField(max_length=50)
     date_of_birth = models.DateField(blank=True, null=True)
@@ -22,7 +22,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name','second_name', 'surname' ,'date_of_birth' ,'phone_number']
+    REQUIRED_FIELDS = ['username', 'first_name','middle_name', 'surname' ,'date_of_birth' ,'phone_number']
 
     class Meta:
         verbose_name = 'user'
@@ -30,14 +30,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         ordering = ['-surname']
 
     def get_full_name(self):
-        return f'{self.first_name}, {self.second_name}, {self.surname}'
+        return f'{self.first_name}, {self.middle_name}, {self.surname}'
 
     def get_short_name(self):
         # return self.first_name.split()[0]
         return f'{self.surname}_{self.first_name}'
 
     def __str__(self):
-        return f'{self.first_name}, {self.second_name}, {self.surname}'
+        return f'{self.first_name}, {self.middle_name}, {self.surname}'
 
 class UserProfile(models.Model):
   user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, primary_key=True, related_name="user_profile")

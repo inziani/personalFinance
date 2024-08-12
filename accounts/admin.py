@@ -20,16 +20,16 @@ class CustomUserAdmin(UserAdmin):
     add_form = UserCreationForm
 
     readonly_fields = ['date_joined', 'last_login', 'is_active', 'is_staff', 'is_superuser']
-    list_display = ('email','first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number')
+    list_display = ('email','first_name', 'middle_name', 'surname', 'date_of_birth', 'phone_number')
     inlines = (UserProfileInline,)
     list_filter = ('is_superuser',)
 
-    add_fieldsets = UserAdmin.add_fieldsets + (
-      ((None, {'fields': ('username', 'email', 'password_1', 'password_2','first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number','is_staff', 'is_active', 'is_superuser', )})),
+    add_fieldsets =(
+      ((None, {'fields': ('username', 'email', 'password_1', 'password_2','first_name', 'middle_name', 'surname', 'date_of_birth', 'phone_number','is_staff', 'is_active', 'is_superuser', )})),
     )
-    fieldsets = UserAdmin.fieldsets + (
+    fieldsets = (
       ((None, {'fields': ('email', 'password',)})),
-      (('Personal Information', {'fields':('first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number')})),
+      (('Personal Information', {'fields':('first_name', 'middle_name', 'surname', 'date_of_birth', 'phone_number')})),
       (('Permissions'), { 'fields': ('is_active', 'is_staff', 'is_superuser', 'groups','user_permissions')}),
       (('Important Dates'), { 'fields': ('last_login', 'date_joined')}),
   )

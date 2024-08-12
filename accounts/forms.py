@@ -8,7 +8,7 @@ class RegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number', 'password')
+        fields = ('username',  'email', 'first_name', 'middle_name', 'surname', 'date_of_birth', 'phone_number', 'password')
 
     def save(self, commit=True):
         #Save the Provided Password in hashed format
@@ -24,7 +24,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model= User
-        fields = ('username',  'email', 'first_name', 'second_name', 'surname', 'date_of_birth', 'phone_number', 'is_staff', 'is_superuser')
+        fields = ('username',  'email', 'first_name', 'middle_name', 'surname', 'date_of_birth', 'phone_number', 'is_staff', 'is_superuser')
 
     def clean_password_2(self):
     # Check that the two passwords match
