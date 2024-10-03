@@ -1,12 +1,12 @@
 {% extends '_base.html' %}
 
 <div class="container">
-{% block title %}Home{% endblock title %}
-{% block content %} <h1>Homepage</h1>
-{% if user.is_authenticated %}
-  Hi {{ user.email }}!
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a> {% endif %}
-{% endblock content %}
+	{% block title %}Personal Finance{% endblock title %} {% block content %}
+	<p>
+		Welcome to PersonalFinance, a Django website developed by
+		<em>Valentine Robai Inziani</em>!
+	</p>
+	{% if user.is_authenticated %} Hi {{ user.email }}! {% else %}
+	<p>You are not logged in</p>
+	<a href="{% url 'login' %}">Log In</a> {% endif %} {% endblock content %}
 </div>

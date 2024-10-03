@@ -1,0 +1,25 @@
+.sidebar-nav {
+	margin-top: 20px;
+	padding: 0;
+	list-style: none;
+}
+
+a:link {
+	color: darkblue;
+	font-weight: lighter;
+	text-decoration: none;
+}
+
+a:visited link {
+	color: pink;
+	text-decoration: line-through;
+}
+a:hover {
+	color: hotpink;
+	text-decoration: none;
+}
+
+a:active {
+	color: paleturquoise;
+	text-decoration: dashed;
+}

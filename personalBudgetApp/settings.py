@@ -8,6 +8,14 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
+
+export const environment = {
+  production: false,
+  apiUrl: "http://localhost:8000",
+  jwtLogin: 'api/token/',
+  jwtRefresh: 'api/token/refresh/'
+
+};
 """
 
 from pathlib import Path
@@ -63,6 +71,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'personalBudgetApp.urls'
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {
